@@ -1,16 +1,14 @@
+// import { useSelector, useDispatch } from 'react-redux';
+// import {selectContact} from './feture/contactsSlice';
+
+import ContactList from 'components/feture/ContactList/ContactList';
+import AddingContacts from 'components/feture/AddingContacts/AddingContacts';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+      <AddingContacts />
+      <ContactList />
     </div>
   );
 };
