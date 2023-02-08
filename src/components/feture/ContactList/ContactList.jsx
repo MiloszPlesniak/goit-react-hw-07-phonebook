@@ -1,6 +1,5 @@
 import ListElement from 'components/feture/ListElement/ListElement';
 import SearchFilter from 'components/feture/SearchFilter/SearchFilter';
-
 import { useSelector } from 'react-redux';
 import { getContact, getFilter } from 'redux/selectors';
 
