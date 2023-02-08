@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/contactsSlice';
 import PropTypes from 'prop-types';
+import { deleteContact } from 'redux/contactsSlice';
 
 const ListElement = ({ singleContact }) => {
   const dispatch = useDispatch();
@@ -10,9 +10,7 @@ const ListElement = ({ singleContact }) => {
       <span>{singleContact.name}</span>
       <span> {singleContact.number}</span>
       <button
-        onClick={() => {
-          dispatch(deleteContact(singleContact.id));
-        }}
+        onClick={() => {dispatch(deleteContact(singleContact.id))}}
       >
         Delete
       </button>

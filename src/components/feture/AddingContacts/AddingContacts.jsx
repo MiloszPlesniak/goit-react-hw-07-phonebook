@@ -1,21 +1,20 @@
 import css from './AddingContacts.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectContact, addContact } from 'redux/contactsSlice';
+import { addContact } from 'redux/contactsSlice';
+import { getContact } from 'redux/selectors';
 import { useRef } from 'react';
-import { nanoid } from 'nanoid';
+
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const AddingContacts = () => {
-  const contacts = useSelector(selectContact).contacts;
+  const { items } = useSelector(getContact);
   const dispatch = useDispatch();
   const name = useRef(null);
   const number = useRef(null);
 
   const addContactInPhoneBook = e => {
-    console.log(e);
     e.preventDefault();
     const newContact = {
-      id: nanoid(),
       name: name.current.value,
       number: number.current.value,
     };
@@ -26,8 +25,7 @@ const AddingContacts = () => {
     e.currentTarget.reset();
   };
   const checkRepeatedContact = contact =>
-    contacts.some(item => item.name === contact.name);
-
+    items.some(item => item.name === contact.name);
   return (
     <div>
       <form onSubmit={addContactInPhoneBook}>
