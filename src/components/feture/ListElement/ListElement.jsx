@@ -10,7 +10,9 @@ const ListElement = ({ singleContact }) => {
       <span>{singleContact.name}</span>
       <span> {singleContact.number}</span>
       <button
-        onClick={() => {dispatch(deleteContact(singleContact.id))}}
+        onClick={() => {
+          dispatch(deleteContact(singleContact.id));
+        }}
       >
         Delete
       </button>

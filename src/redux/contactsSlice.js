@@ -17,19 +17,19 @@ export const fetchContacts = createAsyncThunk(
   }
 );
 export const addContact = createAsyncThunk(
-  "contact/addContact",
-  async (contact) => {
-    const response = await axios.post("/contacts", contact);
-    return response.data
+  'contact/addContact',
+  async contact => {
+    const response = await axios.post('/contacts', contact);
+    return response.data;
   }
-)
+);
 export const deleteContact = createAsyncThunk(
-  "contacts/deleteContact",
-  async (id) => {
-    const response = await axios.delete(`/contacts/${id}`)
-    return response.data
+  'contacts/deleteContact',
+  async id => {
+    const response = await axios.delete(`/contacts/${id}`);
+    return response.data;
   }
-)
+);
 
 export const contactsSlice = createSlice({
   name: 'contacts',
@@ -59,15 +59,13 @@ export const contactsSlice = createSlice({
       state.error = payload;
     },
     [deleteContact.pending](state) {
-      state.isLoading=true
+      state.isLoading = true;
     },
     [deleteContact.fulfilled](state, { payload }) {
-      state.isLoading=false
-      state.items=state.items.filter((item)=>item.id!==payload.id)
-    }
+      state.isLoading = false;
+      state.items = state.items.filter(item => item.id !== payload.id);
+    },
   },
 });
-
-
 
 export default contactsSlice.reducer;
