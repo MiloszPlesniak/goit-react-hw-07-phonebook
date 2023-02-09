@@ -1,5 +1,5 @@
-import ContactList from 'components/feture/ContactList/ContactList';
-import AddingContacts from 'components/feture/AddingContacts/AddingContacts';
+import ContactList from 'components/feature/ContactList/ContactList';
+import AddingContacts from 'components/feature/AddingContacts/AddingContacts';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/contactsSlice';

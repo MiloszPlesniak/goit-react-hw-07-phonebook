@@ -1,5 +1,5 @@
-import ListElement from 'components/feture/ListElement/ListElement';
-import SearchFilter from 'components/feture/SearchFilter/SearchFilter';
+import ListElement from 'components/feature/ListElement/ListElement';
+import SearchFilter from 'components/feature/SearchFilter/SearchFilter';
 import { useSelector } from 'react-redux';
 import { selectContact, selectFilter, selectIsLoading } from 'redux/selectors';
 
