@@ -1,17 +1,17 @@
 import css from './AddingContacts.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { addContact } from 'redux/contactsSlice';
-import { getContact } from 'redux/selectors';
+import { selectContact } from 'redux/selectors';
 import { useRef } from 'react';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const AddingContacts = () => {
-  const { items } = useSelector(getContact);
+  const contacts = useSelector(selectContact);
   const dispatch = useDispatch();
   const name = useRef(null);
   const number = useRef(null);
 
-  const addContactInPhoneBook = e => {
+  function addContactInPhoneBook(e) {
     e.preventDefault();
     const newContact = {
       name: name.current.value,
@@ -22,9 +22,9 @@ const AddingContacts = () => {
       ? Notify.failure(info)
       : dispatch(addContact(newContact));
     e.currentTarget.reset();
-  };
+  }
   const checkRepeatedContact = contact =>
-    items.some(item => item.name === contact.name);
+    contacts.some(item => item.name === contact.name);
   return (
     <div>
       <form onSubmit={addContactInPhoneBook}>

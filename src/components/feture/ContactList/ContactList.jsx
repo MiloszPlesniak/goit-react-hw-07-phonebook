@@ -1,14 +1,15 @@
 import ListElement from 'components/feture/ListElement/ListElement';
 import SearchFilter from 'components/feture/SearchFilter/SearchFilter';
 import { useSelector } from 'react-redux';
-import { getContact, getFilter } from 'redux/selectors';
+import { selectContact, selectFilter, selectIsLoading } from 'redux/selectors';
 
 const ContactList = () => {
-  const { items, isLoading } = useSelector(getContact);
-  const { filter } = useSelector(getFilter);
+  const contacts = useSelector(selectContact);
+  const isLoading = useSelector(selectIsLoading);
+  const { filter } = useSelector(selectFilter);
 
   const handlefilteredContacts = () => {
-    const filtredContacts = items.filter(item =>
+    const filtredContacts = contacts.filter(item =>
       item.name.toLowerCase().includes(filter.toLowerCase())
     );
     return filtredContacts;
@@ -18,7 +19,7 @@ const ContactList = () => {
       <h2>Contact</h2>
       <SearchFilter></SearchFilter>
       {isLoading && <p>Loading...</p>}
-      {isLoading === false && items.length === 0 ? (
+      {isLoading === false && contacts.length === 0 ? (
         <p>Brak kontaktów</p>
       ) : (
         <ul>
